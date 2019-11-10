@@ -111,13 +111,13 @@ star_wars[star_wars.columns[9:15]] = star_wars[star_wars.columns[9:15]].astype(f
 
 print(star_wars[star_wars.columns[9:15]].mean())
 ```
-ranking_1    3.732934
-ranking_2    4.087321
-ranking_3    4.341317
-ranking_4    3.272727
-ranking_5    2.513158
-ranking_6    3.047847
-dtype: float64
+ranking_1    3.732934  
+ranking_2    4.087321  
+ranking_3    4.341317  
+ranking_4    3.272727  
+ranking_5    2.513158  
+ranking_6    3.047847  
+dtype: float64  
 
 Now that we have the average ratings, let's create a plot to visualize it:  
 Note: The following was run on Jupyter Notebook, which has a "maigc command" (%matplotlib inline) that will print the graphs in order of creation. If not using Jupyter Notebook, you will use the "matplotlib.pyplot.show()" function under the matplotlib package at the end. This will print out all of the created graphs at once.  
@@ -131,3 +131,47 @@ star_wars[star_wars.columns[9:15]].mean().plot.bar(rot=0)
 ```
 
 Remember, a lower number is better because this is a ranking system. Thus it's preferable to be closer to 1 (best possible rank) than it is to 6 (worst possible rank). Looking at the graph, it seems the original trilogy (Episode 4-6) is rated higher than the second trilogy (1-3). The data also isn't perfect as it seems the responders had to rank every movie, despite possibly not seeing all of them.
+
+Let's take a look at which films have been seen the most by our responders:
+```python
+print(star_wars[star_wars.columns[3:9]].sum())
+
+star_wars[star_wars.columns[3:9]].sum().plot.bar(rot=0)
+```
+
+Not only does the original trilogy have higher rankings, more have also seen it. It's possible that this is a direct correlation and they were ranked higher only because more responders have actually seen it.
+
+Let's have some fun with the data and see if there's a difference in rankings & views between both genders.
+
+```python
+males = star_wars[star_wars["Gender"] == "Male"]
+females = star_wars[star_wars["Gender"] == "Female"]
+
+males[males.columns[9:15]].mean().plot.bar(rot=0)
+print(males[males.columns[9:15]].mean())
+
+females[females.columns[9:15]].mean().plot.bar(rot=0)
+print(females[females.columns[9:15]].mean())
+```
+Male Rankings:  
+
+
+Female Rankings:  
+
+```python
+males[males.columns[3:9]].sum().plot.bar(rot=0)
+print(males[males.columns[3:9]].sum())
+
+females[females.columns[3:9]].sum().plot.bar(rot=0)
+print(females[females.columns[3:9]].sum())
+```
+
+Male Views:  
+
+Female Views:  
+
+
+Lastly, we can use show() to get all the bar graphs above to print:
+```python
+matplotlib.pyplot.show()
+```
