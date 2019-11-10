@@ -158,13 +158,9 @@ females[females.columns[9:15]].mean().plot.bar(rot=0)
 print(females[females.columns[9:15]].mean())
 ```
 Male Rankings:  
-
 ![image](https://user-images.githubusercontent.com/57373723/68537704-687a4580-031d-11ea-8108-ab8ddc186b10.png)
-
 Female Rankings:  
-
 ![image](https://user-images.githubusercontent.com/57373723/68537705-729c4400-031d-11ea-9a29-3f99dba9b2e9.png)
-
 ```python
 males[males.columns[3:9]].sum().plot.bar(rot=0)
 print(males[males.columns[3:9]].sum())
@@ -172,13 +168,9 @@ print(males[males.columns[3:9]].sum())
 females[females.columns[3:9]].sum().plot.bar(rot=0)
 print(females[females.columns[3:9]].sum())
 ```
-
 Male Views:  
-
 ![image](https://user-images.githubusercontent.com/57373723/68537708-7af47f00-031d-11ea-8055-4475fd91c766.png)
-
 Female Views:  
-
 ![image](https://user-images.githubusercontent.com/57373723/68537714-834cba00-031d-11ea-8adf-e1cd5658da5b.png)
 
 Based on the new information/graphs, despite more males having watched episodes 1-3, they tend to have liked them much less than females.
