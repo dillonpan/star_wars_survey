@@ -214,6 +214,30 @@ dtype: int64
 
 Based on the new information/graphs, despite more males having watched episodes 1-3, they tend to have liked them much less than females.
 
+Rmmeber how we stated that the respondants had to rank every movie even if they had not seen all of them? Let's cleanup the data so that for the respondants, we delete their ranks for the movies they have not seen. We had also previously change the column names for better clarity and can now use it to our advantage. We can plot then plot and compare the graph to the previous ratings:
+```python
+watched_ratings = star_wars.copy()
+
+for number in range(1, 7):
+    seen_col = 'seen_' + str(number)
+    rank_col = 'ranking_' + str(number)
+    watched_ratings.loc[watched_ratings[seen_col] == False, rank_col] = numpy.nan
+    
+print(watched_ratings[watched_ratings.columns[9:15]].mean())
+watched_ratings[watched_ratings.columns[9:15]].mean().plot.bar(rot=0)
+```
+ranking_1    3.787519  
+ranking_2    4.126095  
+ranking_3    4.158470  
+ranking_4    2.650741  
+ranking_5    2.299472  
+ranking_6    2.738482  
+dtype: float64  
+
+![image](https://user-images.githubusercontent.com/57373723/68552000-2279bc00-03c7-11ea-8934-5d7c67389af5.png)
+
+When looking at the new ratings graph, there doesn't seem to be much of a change for the second triogy (1-3) but the original trilogy (4-6) seems to have even better rankings this time around. Remember, closer to 1 in rankings the better. The movie with a real noticeable difference in their rating is movie 4, "Star Wars: Episode IV - A New Hope". Those who have seen it may have rated it higher since it was the first movie to release in the Star Wars series, providing a nostalgic feeling.
+
 Lastly, we can use show() to get all the bar graphs above to print:
 ```python
 matplotlib.pyplot.show()
