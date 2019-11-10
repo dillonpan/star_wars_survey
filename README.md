@@ -2,7 +2,7 @@
 Project using the Python package "pandas" and various functions to combine, clean, and analyze data in multiple CSV files
 
 # Project Details:
-Back in 2014 before Star Wars: The Force Awakens came out, FiveThirtyEight, a website which focuses on statistical anaylysis as the basis for their articles in various subjects, collected data via SurveyMonkey on previous Star Wars films. There's over 1,000 responses in the dataset but a few hundred will end up disregarded as they didnt rank any of the movies nor list which they've seen. The 835 responses that did rank the movies also added information on which movies they've seen, how they ranked those movies, and some personal information such as age, gender, and income. Let's take a look and find out which movie was ranked the highest from these responses.
+Back in 2014 before Star Wars: The Force Awakens came out, FiveThirtyEight, a website which focuses on statistical anaylysis as the basis for their articles in various subjects, collected data via SurveyMonkey on previous Star Wars films. The 835 responders provided information such as which movies they've seen, how they ranked those movies, and some personal information like age, gender, and income. There's actually over 1,000 responses in the dataset but a few hundred will end up disregarded as they didnt rank any of the movies nor list which they've seen. Let's take a look and find out which movie was ranked the highest from these responses.
 
 # Note: Please replace [directory] below in the open() function with the link to your folder of choice where dete_survey.csv & tafe_survey.csv is located
 
@@ -140,6 +140,13 @@ print(star_wars[star_wars.columns[3:9]].sum())
 
 star_wars[star_wars.columns[3:9]].sum().plot.bar(rot=0)
 ```
+seen_1    673  
+seen_2    571  
+seen_3    550  
+seen_4    607  
+seen_5    758  
+seen_6    738  
+dtype: int64  
 
 ![image](https://user-images.githubusercontent.com/57373723/68537702-60baa100-031d-11ea-9c8d-cd4b7af78667.png)
 
@@ -151,26 +158,58 @@ Let's have some fun with the data and see if there's a difference in rankings & 
 males = star_wars[star_wars["Gender"] == "Male"]
 females = star_wars[star_wars["Gender"] == "Female"]
 
-males[males.columns[9:15]].mean().plot.bar(rot=0)
 print(males[males.columns[9:15]].mean())
+males[males.columns[9:15]].mean().plot.bar(rot=0)
 
-females[females.columns[9:15]].mean().plot.bar(rot=0)
 print(females[females.columns[9:15]].mean())
+females[females.columns[9:15]].mean().plot.bar(rot=0)
 ```
+
 Male Rankings:  
+ranking_1    4.037825  
+ranking_2    4.224586  
+ranking_3    4.274882  
+ranking_4    2.997636  
+ranking_5    2.458629  
+ranking_6    3.002364  
+dtype: float64
 ![image](https://user-images.githubusercontent.com/57373723/68537704-687a4580-031d-11ea-8108-ab8ddc186b10.png)
+
 Female Rankings:  
+ranking_1    3.429293  
+ranking_2    3.954660  
+ranking_3    4.418136  
+ranking_4    3.544081  
+ranking_5    2.569270  
+ranking_6    3.078086  
+dtype: float64  
 ![image](https://user-images.githubusercontent.com/57373723/68537705-729c4400-031d-11ea-9a29-3f99dba9b2e9.png)
 ```python
-males[males.columns[3:9]].sum().plot.bar(rot=0)
 print(males[males.columns[3:9]].sum())
+males[males.columns[3:9]].sum().plot.bar(rot=0)
 
-females[females.columns[3:9]].sum().plot.bar(rot=0)
 print(females[females.columns[3:9]].sum())
+females[females.columns[3:9]].sum().plot.bar(rot=0)
 ```
+
 Male Views:  
+seen_1    361  
+seen_2    323  
+seen_3    317  
+seen_4    342  
+seen_5    392  
+seen_6    387  
+dtype: int64  
 ![image](https://user-images.githubusercontent.com/57373723/68537708-7af47f00-031d-11ea-8055-4475fd91c766.png)
+
 Female Views:  
+seen_1    298  
+seen_2    237  
+seen_3    222  
+seen_4    255  
+seen_5    353  
+seen_6    338  
+dtype: int64  
 ![image](https://user-images.githubusercontent.com/57373723/68537714-834cba00-031d-11ea-8adf-e1cd5658da5b.png)
 
 Based on the new information/graphs, despite more males having watched episodes 1-3, they tend to have liked them much less than females.
