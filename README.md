@@ -130,6 +130,8 @@ import matplotlib.pyplot # no need to import if using Juniper Notebook
 star_wars[star_wars.columns[9:15]].mean().plot.bar(rot=0)
 ```
 
+![image](https://user-images.githubusercontent.com/57373723/68537700-57313900-031d-11ea-8f32-441c1b0efdc3.png)
+
 Remember, a lower number is better because this is a ranking system. Thus it's preferable to be closer to 1 (best possible rank) than it is to 6 (worst possible rank). Looking at the graph, it seems the original trilogy (Episode 4-6) is rated higher than the second trilogy (1-3). The data also isn't perfect as it seems the responders had to rank every movie, despite possibly not seeing all of them.
 
 Let's take a look at which films have been seen the most by our responders:
@@ -138,6 +140,8 @@ print(star_wars[star_wars.columns[3:9]].sum())
 
 star_wars[star_wars.columns[3:9]].sum().plot.bar(rot=0)
 ```
+
+![image](https://user-images.githubusercontent.com/57373723/68537702-60baa100-031d-11ea-9c8d-cd4b7af78667.png)
 
 Not only does the original trilogy have higher rankings, more have also seen it. It's possible that this is a direct correlation and they were ranked higher only because more responders have actually seen it.
 
@@ -155,8 +159,11 @@ print(females[females.columns[9:15]].mean())
 ```
 Male Rankings:  
 
+![image](https://user-images.githubusercontent.com/57373723/68537704-687a4580-031d-11ea-8108-ab8ddc186b10.png)
 
 Female Rankings:  
+
+![image](https://user-images.githubusercontent.com/57373723/68537705-729c4400-031d-11ea-9a29-3f99dba9b2e9.png)
 
 ```python
 males[males.columns[3:9]].sum().plot.bar(rot=0)
@@ -168,8 +175,13 @@ print(females[females.columns[3:9]].sum())
 
 Male Views:  
 
+![image](https://user-images.githubusercontent.com/57373723/68537708-7af47f00-031d-11ea-8055-4475fd91c766.png)
+
 Female Views:  
 
+![image](https://user-images.githubusercontent.com/57373723/68537714-834cba00-031d-11ea-8adf-e1cd5658da5b.png)
+
+Based on the new information/graphs, despite more males having watched episodes 1-3, they tend to have liked them much less than females.
 
 Lastly, we can use show() to get all the bar graphs above to print:
 ```python
