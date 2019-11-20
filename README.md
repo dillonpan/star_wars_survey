@@ -2,7 +2,7 @@
 Project using the Python package "pandas" and various functions to combine, clean, and analyze data in multiple CSV files
 
 # Project Details:
-Back in 2014 before Star Wars: The Force Awakens came out, FiveThirtyEight, a website which focuses on statistical anaylysis as the basis for their articles in various subjects, collected data via SurveyMonkey on previous Star Wars films. The 835 responders provided information such as which movies they've seen, how they ranked those movies, and some personal information like age, gender, and income. There's actually over 1,000 responses in the dataset but a few hundred will end up disregarded as they didnt rank any of the movies nor list which they've seen. Let's take a look and find out which movie was ranked the highest from these responses.
+Back in 2014 before Star Wars: The Force Awakens came out, FiveThirtyEight, a website which focuses on statistical analysis as the basis for their articles in various subjects, collected data via SurveyMonkey on previous Star Wars films. The 835 responders provided information such as which movies they've seen, how they ranked those movies, and some personal information like age, gender, and income. There are actually over 1,000 responses in the dataset but a few hundred will end up disregarded as they didn't rank any of the movies nor list which they've seen. Let's look and find out which movie was ranked the highest from these responses.
 
 # Note: Please replace [directory] below in the open() function with the link to your folder of choice where dete_survey.csv & tafe_survey.csv is located
 
@@ -56,14 +56,14 @@ True     552
 False    284  
 Name: Do you consider yourself to be a fan of the Star Wars film franchise?, dtype: int64  
 
-We need to do something similiar with the next six columns, each one representing if the respondent has seen that Star Wars film. These columns are a little weird as the column headers are a bit ambiguous and if the respondent did see the movie, the value would be the title of the film and not a typical Yes/No or True/False response.
+We need to do something similar with the next six columns, each one representing if the respondent has seen that Star Wars film. These columns are a little weird as the column headers are a bit ambiguous and if the respondent did see the movie, the value would be the title of the film and not a typical Yes/No or True/False response.
 For example: one of the headers is "Unnamed: 4", this column represents if the respondent has seen Star Wars II. If they have, the value would be "Star Wars: Episode II  Attack of the Clones" and if they haven't, the value would just be empty.
 It's a little weird compared to the Yes/No response but at least the responses have the same value so it's not too difficult to work with:
 
 ```python
 import numpy
 
-# The jist is if the title comes up, that means the respondent has seen the movie. Thus we can replace the value with True. If otherwise # empty, the value is now False
+# The gist is if the title comes up, that means the respondent has seen the movie. Thus, we can replace the value with True. If otherwise # empty, the value is now False
 movie_mapping = {
     "Star Wars: Episode I  The Phantom Menace": True,
     "Star Wars: Episode II  Attack of the Clones": True,
@@ -79,7 +79,7 @@ for col in star_wars.columns[3:9]:
     star_wars[col] = star_wars[col].map(movie_mapping)
 ```
 
-Now lets revise the column headers as well to make it a little easier to work with:  
+Now let's revise the column headers as well to make it a little easier to work with:  
 ```python
 star_wars = star_wars.rename(columns={
         "Which of the following Star Wars films have you seen? Please select all that apply.": "seen_1",
@@ -120,7 +120,7 @@ ranking_6    3.047847
 dtype: float64  
 
 Now that we have the average ratings, let's create a plot to visualize it:  
-Note: The following was run on Jupyter Notebook, which has a "maigc command" (%matplotlib inline) that will print the graphs in order of creation. If not using Jupyter Notebook, you will use the "matplotlib.pyplot.show()" function under the matplotlib package at the end. This will print out all of the created graphs at once.  
+Note: The following was run on Jupyter Notebook, which has a "magic command" (%matplotlib inline) that will print the graphs in order of creation. If not using Jupyter Notebook, you will use the "matplotlib.pyplot.show()" function under the matplotlib package at the end. This will print out all the created graphs at once.  
 
 ```python
 % matplotlib inline # Magic command used only in Juniper Notebook. Delete this line otherwise or it will cause an error
@@ -132,9 +132,9 @@ star_wars[star_wars.columns[9:15]].mean().plot.bar(rot=0)
 
 ![image](https://user-images.githubusercontent.com/57373723/68537700-57313900-031d-11ea-8f32-441c1b0efdc3.png)
 
-Remember, a lower number is better because this is a ranking system. Thus it's preferable to be closer to 1 (best possible rank) than it is to 6 (worst possible rank). Looking at the graph, it seems the original trilogy (Episode 4-6) is rated higher than the second trilogy (1-3). The data also isn't perfect as it seems the responders had to rank every movie, despite possibly not seeing all of them.
+Remember, a lower number is better because this is a ranking system. Thus, it's preferable to be closer to 1 (best possible rank) than it is to 6 (worst possible rank). Looking at the graph, it seems the original trilogy (Episode 4-6) is rated higher than the second trilogy (1-3). The data also isn't perfect as it seems the responders had to rank every movie, despite possibly not seeing all of them.
 
-Let's take a look at which films have been seen the most by our responders:
+Let's look at which films have been seen the most by our responders:
 ```python
 print(star_wars[star_wars.columns[3:9]].sum())
 
@@ -214,7 +214,7 @@ dtype: int64
 
 Based on the new information/graphs, despite more males having watched episodes 1-3, they tend to have liked them much less than females.
 
-Rmmeber how we stated that the respondants had to rank every movie even if they had not seen all of them? Let's cleanup the data so that for the respondants, we delete their ranks for the movies they have not seen. We had also previously change the column names for better clarity and can now use it to our advantage. We can plot then plot and compare the graph to the previous ratings:
+Remember how we stated that the respondents had to rank every movie even if they had not seen all of them? Let's cleanup the data so that for the respondents, we delete their ranks for the movies they have not seen. We had also previously changed the column names for better clarity and can now use it to our advantage. We can plot then plot and compare the graph to the previous ratings:
 ```python
 watched_ratings = star_wars.copy()
 
@@ -236,7 +236,7 @@ dtype: float64
 
 ![image](https://user-images.githubusercontent.com/57373723/68552000-2279bc00-03c7-11ea-8934-5d7c67389af5.png)
 
-When looking at the new ratings graph, there doesn't seem to be much of a change for the second triogy (1-3) but the original trilogy (4-6) seems to have even better rankings this time around. Remember, closer to 1 in rankings the better. The movie with a real noticeable difference in their rating is movie 4, "Star Wars: Episode IV - A New Hope". Those who have seen it may have rated it higher since it was the first movie to release in the Star Wars series, providing a nostalgic feeling.
+When looking at the new ratings graph, there doesn't seem to be much of a change for the second trilogy (1-3) but the original trilogy (4-6) seems to have even better rankings this time around. Remember, closer to 1 in rankings the better. The movie with a real noticeable difference in their rating is movie 4, "Star Wars: Episode IV - A New Hope". Those who have seen it may have rated it higher since it was the first movie to release in the Star Wars series, providing a nostalgic feeling.
 
 Lastly, we can use show() to get all the bar graphs above to print:
 ```python
